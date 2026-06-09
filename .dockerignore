@@ -1,0 +1,47 @@
+# ── Credentials (never in image) ──────────────────────────────────────────────
+.env
+.env.*
+
+# ── Python cache ───────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+
+# ── Version control ────────────────────────────────────────────────────────────
+.git/
+.gitignore
+.gitattributes
+
+# ── Documentation (not needed at Lambda runtime) ──────────────────────────────
+docs/
+README.md
+*.md
+
+# ── IDE / OS artifacts ────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Logs ───────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Local Excel source files (downloaded at runtime to /tmp) ──────────────────
+app/source/*.xlsx
+
+# ── Claude Code ────────────────────────────────────────────────────────────────
+.claude/
+
+# ── Local entry point (Lambda uses lambda_handler.py, not app.py) ─────────────
+app.py

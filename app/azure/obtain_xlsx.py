@@ -77,11 +77,15 @@ def obtain_xlsx() -> str:
         raise RuntimeError(f"Variables de entorno faltantes: {missing}")
 
     # Ruta destino del archivo Excel.
-    # Local: ruta absoluta al archivo    → C:\path\to\file.xlsx
-    # AWS Lambda / ECS: /tmp/source_file.xlsx
-    output_path = os.getenv(
-        "PRESUPUESTO_EXCEL_PATH", "app/source/source_file.xlsx"
+    # Local: ruta relativa al directorio de trabajo.
+    # AWS Lambda: /tmp/ es el único directorio escribible (512 MB por defecto).
+    # La detección automática usa AWS_LAMBDA_FUNCTION_NAME, que Lambda siempre inyecta.
+    _default_path = (
+        "/tmp/PresupuestoIniciativas.xlsx"
+        if os.getenv("AWS_LAMBDA_FUNCTION_NAME")
+        else "app/source/source_file.xlsx"
     )
+    output_path = os.getenv("PRESUPUESTO_EXCEL_PATH", _default_path)
 
     # abspath garantiza que dirname nunca sea "" (caso: solo nombre de archivo sin directorio)
     output_dir = os.path.dirname(os.path.abspath(output_path))
