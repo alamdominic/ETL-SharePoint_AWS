@@ -1,0 +1,56 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Logs
+logs/
+*.log
+
+# Invalid records exports
+invalid_records/
+
+# Debug Excel exports
+excel/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (keep docs/ structure but ignore actual data)
+docs/*.xlsx
+docs/*.xls
+docs/*.csv
+
+# Internal planning / prompt notes
+docs/prompt.md
+
+# SQL queries (internal DDL/DML)
+app/db/**/*.sql
+
+# Data files in source (runtime temp files, no data en repo)
+app/source/*.xlsx
+app/source/*.xls
+app/source/*.csv
